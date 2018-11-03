@@ -24,6 +24,24 @@ class MergeSort:
         merged = merged + smaller + bigger
         return merged
 
+    def merge2(self, a, b):
+        a_length, b_length = len(a), len(b)
+        a_index, b_index = 0, 0
+        merged = []
+        while a_index < a_length and b_index < b_length:
+            self.comparisons += 1
+            if a[a_index] <= b[b_index]:
+                merged.append(a[a_index])
+                a_index += 1
+            else:
+                merged.append(b[b_index])
+                b_index += 1
+        if a_index < a_length:
+            merged += a
+        if b_index < b_length:
+            merged += b
+        return merged
+
     def sort(self, items):
         length = len(items)
         if length == 1 or length == 0:
